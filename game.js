@@ -12,6 +12,7 @@
   var mineInput = document.getElementById('mm');
   var okButton = document.getElementById('custom-ok');
   var statusBar = document.getElementById('p42');
+  var levelLinks = document.querySelector('.level-links');
 
   var X = 16;
   var Y = 16;
@@ -453,14 +454,16 @@
 
   function setLevel(level) {
     var value = level == null ? localStorage.getItem('ch7') : String(level);
-    var bodyWidth = document.body.clientWidth;
-    var bodyHeight = document.body.clientHeight || window.innerHeight;
+    var docElement = document.documentElement || {};
+    var bodyWidth = window.innerWidth || docElement.clientWidth || document.body.clientWidth;
+    var bodyHeight = window.innerHeight || docElement.clientHeight || document.body.clientHeight;
 
     if (!value) {
       value = bodyWidth < 560 ? '1' : '2';
     }
 
     currentLevel = parseInt(value, 10);
+    document.body.classList.toggle('fullscreen-mode', currentLevel === 4);
     customPanel.hidden = currentLevel !== 5;
 
     if (currentLevel === 1) {
@@ -481,8 +484,11 @@
         Y = 30;
       }
     } else if (currentLevel === 4) {
-      X = parseInt((bodyWidth - 18) / 25, 10);
-      Y = parseInt((bodyHeight - 54) / 25, 10);
+      var toolbarHeight = levelLinks ? levelLinks.getBoundingClientRect().height : 28;
+      var shellChromeWidth = 22;
+      var shellChromeHeight = 62;
+      X = parseInt((bodyWidth - shellChromeWidth) / 25, 10);
+      Y = parseInt((bodyHeight - toolbarHeight - shellChromeHeight) / 25, 10);
       X = Math.max(1, X);
       Y = Math.max(1, Y);
       var cells = X * Y;

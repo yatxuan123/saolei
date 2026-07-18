@@ -1,65 +1,76 @@
-<!doctype html>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1">
-  <meta name="description" content="经典扫雷在线游戏">
-  <title>经典扫雷在线游戏</title>
-  <link rel="stylesheet" href="./styles.css">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="initial-scale=1">
+<meta name="keywords" content="扫雷,扫雷游戏,saolei">
+<meta name="description" content="windows经典扫雷游戏，在电脑或手机上打开网页就可以玩，无需下载安装。增加了满屏级别，自适应屏幕大小。">
+<title>扫雷游戏_经典扫雷游戏在线玩_手机版windows扫雷网页版</title>
+<link rel="stylesheet" type="text/css" href="./styles.css">
+<script src="./assets.js"></script>
+<style>
+input {height:1.5rem;font-size:1.1rem;width:2.6rem;}
+#face {border:2px solid #808080;border-left-color:#fff;border-top-color:#fff;width:21px;height:21px;}
+#face:active {border:2px solid #808080;border-bottom:1px solid #808080;border-right:1px solid #808080;}
+table {border-collapse:collapse;}
+.pad {border:2px solid #808080;border-right-color:#fff;border-bottom-color:#fff;}
+h1{text-align:center;}
+</style>
+<base target="_top">
 </head>
-<body>
-  <main class="container">
-    <h1>经典扫雷在线游戏</h1>
+<body style="margin:0;" onload="start()">
+<div class="container">
+<h1>经典扫雷在线游戏</h1>
+  <center>
+    <div style="margin-top:0.8rem;">
+      <a href="javascript:_123(1)">基础</a>
+      &nbsp;
+      <a href="javascript:_123(2)">中级</a>
+      &nbsp;
+      <a href="javascript:_123(3)">专家</a>
+      &nbsp;
+      <a href="javascript:_123(4)">满屏</a>
+      &nbsp;
+      <a href="javascript:_123(5)">自定义</a>
+    </div>
+    <div id="custom" style="display:none">
+      横向：<input id="hm" type="number" value="40">
+      竖向：<input id="vm" type="number" value="24">
+      雷数：<input id="mm" type="number" value="199">
+      <input type="button" onclick="udf()" value="确定">
+    </div>
+    <table style="margin-top:0.8rem;border-radius:6px;background:#cccccc">
+      <tr>
+        <td style="padding:9px;">
 
-    <section class="game-area" aria-label="经典扫雷在线游戏">
-      <div class="level-links" aria-label="难度选择">
-        <a href="#" data-level="1">基础</a>
-        &nbsp;
-        <a href="#" data-level="2">中级</a>
-        &nbsp;
-        <a href="#" data-level="3">专家</a>
-        &nbsp;
-        <a href="#" data-level="4">满屏</a>
-        &nbsp;
-        <a href="#" data-level="5">自定义</a>
-      </div>
+          <table id="p42" class="pad" style="height:34px">
+            <tr>
+              <td width="50%"><canvas id="rm" height="23" width="39"></canvas>
+              </td>
+              <td align="center"><img onmouseup="_45()" id="face"></td>
+              <td width="50%" align="right">
+                <canvas id="es" height="23" width="39"></canvas>
+              </td>
+            </tr>
+          </table>
 
-      <div id="custom" class="custom-panel" hidden>
-        横向：<input id="hm" type="number" value="15" min="1">
-        竖向：<input id="vm" type="number" value="15" min="1">
-        雷数：<input id="mm" type="number" value="20" min="1">
-        <input id="custom-ok" type="button" value="确定">
-      </div>
+          <canvas id="paf" class="pad" style="margin-top:6px;" width="0" height="0"></canvas>
 
-      <table class="mine-shell" role="presentation">
-        <tbody>
-          <tr>
-            <td class="mine-shell-cell">
-              <table id="p42" class="pad mine-status" role="presentation">
-                <tbody>
-                  <tr>
-                    <td width="50%">
-                      <canvas id="rm" height="23" width="39" aria-label="剩余雷数"></canvas>
-                    </td>
-                    <td align="center">
-                      <img id="face" alt="重新开始" src="" draggable="false">
-                    </td>
-                    <td width="50%" align="right">
-                      <canvas id="es" height="23" width="39" aria-label="用时"></canvas>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+        </td>
+      </tr>
+      <tr>
+        <td align="right"></td>
+      </tr>
+    </table>
+    <br>
+  </center>
 
-              <canvas id="paf" class="pad mine-board" width="400" height="400" aria-label="扫雷棋盘"></canvas>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-  </main>
-
-  <script src="./assets.js"></script>
-  <script src="./game.js"></script>
+  <div style="margin-top:0rem;">
+    <span id="uid" style="color:#ffffff"></span>
+    <a id="ss" href="scores.htm" style="display:none"></a>
+  </div>
+  <script>function ad(){}</script>
+  <script src="./main.js"></script>
+</div>
 </body>
 </html>
