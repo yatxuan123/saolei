@@ -38,7 +38,8 @@ h1{text-align:center;}
     <div id="custom" style="display:none">
       <input id="hm" type="hidden" value="15">
       <input id="vm" type="hidden" value="15">
-      雷数：<input id="mm" type="number" min="1" value="20">
+      雷数：<input id="mm" type="number" min="1" value="20" oninput="udp()">
+      <span id="dfp"></span>
       <input type="button" onclick="udf()" value="确定">
     </div>
     <table style="margin-top:0.8rem;border-radius:6px;background:#cccccc">

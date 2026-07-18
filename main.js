@@ -483,6 +483,12 @@ function _cm9(A) {
 	};
 	return [G, H, B]
 }
+function udp() {
+	var ca = _cm9($('mm')['value']);
+	$('hm')['value'] = ca[0] + '';
+	$('vm')['value'] = ca[1] + '';
+	$('dfp')['innerHTML'] = '范围：' + ca[0] + '×' + ca[1]
+}
 function _edn() {
 	if (he > 0) {
 		clearInterval(he);
@@ -546,6 +552,7 @@ if (df5 == null) {
 		$('vm')['value'] = cz[1] + ''
 	}
 };
+udp();
 function start() {
 	_123(localStorage['getItem']('ch7'));
 	on();
@@ -622,7 +629,8 @@ function _123(d) {
 						M = cz[2];
 						$('hm')['value'] = X + '';
 						$('vm')['value'] = Y + '';
-						$('mm')['value'] = M + ''
+						$('mm')['value'] = M + '';
+						udp()
 					} else {
 						return
 					}
