@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1">
+  <meta name="description" content="经典扫雷在线游戏">
+  <title>经典扫雷在线游戏</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>经典扫雷在线游戏</h1>
+
+    <section class="game-area" aria-label="经典扫雷在线游戏">
+      <div class="level-links" aria-label="难度选择">
+        <a href="#" data-level="1">基础</a>
+        &nbsp;
+        <a href="#" data-level="2">中级</a>
+        &nbsp;
+        <a href="#" data-level="3">专家</a>
+        &nbsp;
+        <a href="#" data-level="4">满屏</a>
+        &nbsp;
+        <a href="#" data-level="5">自定义</a>
+      </div>
+
+      <div id="custom" class="custom-panel" hidden>
+        横向：<input id="hm" type="number" value="15" min="1">
+        竖向：<input id="vm" type="number" value="15" min="1">
+        雷数：<input id="mm" type="number" value="20" min="1">
+        <input id="custom-ok" type="button" value="确定">
+      </div>
+
+      <table class="mine-shell" role="presentation">
+        <tbody>
+          <tr>
+            <td class="mine-shell-cell">
+              <table id="p42" class="pad mine-status" role="presentation">
+                <tbody>
+                  <tr>
+                    <td width="50%">
+                      <canvas id="rm" height="23" width="39" aria-label="剩余雷数"></canvas>
+                    </td>
+                    <td align="center">
+                      <img id="face" alt="重新开始" src="" draggable="false">
+                    </td>
+                    <td width="50%" align="right">
+                      <canvas id="es" height="23" width="39" aria-label="用时"></canvas>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <canvas id="paf" class="pad mine-board" width="400" height="400" aria-label="扫雷棋盘"></canvas>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="./assets.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>
