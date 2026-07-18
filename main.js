@@ -448,6 +448,41 @@ function sopen() {
 function _r39(A) {
 	return Math['floor'](Math['random']() * A)
 }
+function _cm9(A) {
+	var B = parseInt(A, 10);
+	if (isNaN(B) || B < 1) {
+		B = 1
+	};
+	var C;
+	if (B >= 99) {
+		C = B / 0.20625
+	} else {
+		C = (-720 + Math['sqrt'](518400 + 23040 * B)) / 2
+	};
+	C = Math['max'](81, Math['ceil'](C), B + 1);
+	var D = window['innerWidth'] || document['body']['clientWidth'] || 1020;
+	var E = window['innerHeight'] || document['body']['clientHeight'] || 768;
+	var F = (D - 18) / (E - 54);
+	if (!isFinite(F) || F <= 0) {
+		F = 1
+	};
+	var G = Math['ceil'](Math['sqrt'](C * F));
+	var H = Math['ceil'](C / G);
+	if (G < 9) {
+		G = 9
+	};
+	if (H < 9) {
+		H = 9
+	};
+	while (G * H <= B) {
+		if (G <= H) {
+			G++
+		} else {
+			H++
+		}
+	};
+	return [G, H, B]
+}
 function _edn() {
 	if (he > 0) {
 		clearInterval(he);
@@ -494,14 +529,22 @@ function M5k(k, l) {
 }
 var df5 = localStorage['getItem']('df5');
 if (df5 == null) {
-	$('hm')['value'] = 15;
-	$('vm')['value'] = 15;
-	$('mm')['value'] = 20
+	$('mm')['value'] = 20;
+	var cz = _cm9(20);
+	$('hm')['value'] = cz[0] + '';
+	$('vm')['value'] = cz[1] + ''
 } else {
 	var cv = df5['split'](';');
-	$('hm')['value'] = cv[0];
-	$('vm')['value'] = cv[1];
-	$('mm')['value'] = cv[2]
+	if (cv['length'] > 2) {
+		$('hm')['value'] = cv[0];
+		$('vm')['value'] = cv[1];
+		$('mm')['value'] = cv[2]
+	} else {
+		$('mm')['value'] = cv[0];
+		var cz = _cm9(cv[0]);
+		$('hm')['value'] = cz[0] + '';
+		$('vm')['value'] = cz[1] + ''
+	}
 };
 function start() {
 	_123(localStorage['getItem']('ch7'));
@@ -573,12 +616,13 @@ function _123(d) {
 					M = parseInt(M)
 				} else {
 					if (d == 5) {
-						X = $('hm')['value'];
-						Y = $('vm')['value'];
-						M = $('mm')['value'];
-						if (M > X * Y) {
-							M = X * Y
-						}
+						var cz = _cm9($('mm')['value']);
+						X = cz[0];
+						Y = cz[1];
+						M = cz[2];
+						$('hm')['value'] = X + '';
+						$('vm')['value'] = Y + '';
+						$('mm')['value'] = M + ''
 					} else {
 						return
 					}

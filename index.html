@@ -7,9 +7,11 @@
 <meta name="description" content="windows经典扫雷游戏，在电脑或手机上打开网页就可以玩，无需下载安装。增加了满屏级别，自适应屏幕大小。">
 <title>扫雷游戏_经典扫雷游戏在线玩_手机版windows扫雷网页版</title>
 <link rel="stylesheet" type="text/css" href="./styles.css">
+<link rel="icon" href="./favicon.ico">
 <script src="./assets.js"></script>
 <style>
 input {height:1.5rem;font-size:1.1rem;width:2.6rem;}
+#mm {width:4.2rem;}
 #face {border:2px solid #808080;border-left-color:#fff;border-top-color:#fff;width:21px;height:21px;}
 #face:active {border:2px solid #808080;border-bottom:1px solid #808080;border-right:1px solid #808080;}
 table {border-collapse:collapse;}
@@ -34,9 +36,9 @@ h1{text-align:center;}
       <a href="javascript:_123(5)">自定义</a>
     </div>
     <div id="custom" style="display:none">
-      横向：<input id="hm" type="number" value="40">
-      竖向：<input id="vm" type="number" value="24">
-      雷数：<input id="mm" type="number" value="199">
+      <input id="hm" type="hidden" value="15">
+      <input id="vm" type="hidden" value="15">
+      雷数：<input id="mm" type="number" min="1" value="20">
       <input type="button" onclick="udf()" value="确定">
     </div>
     <table style="margin-top:0.8rem;border-radius:6px;background:#cccccc">
