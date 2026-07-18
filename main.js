@@ -162,6 +162,7 @@ function DS(G) {
 	var J = H['getContext']('2d');
 	var I = 3;
 	return function(L) {
+		var M0 = L;
 		if (L < 10) {
 			L = '00' + L
 		} else {
@@ -178,8 +179,204 @@ function DS(G) {
 		};
 		for (var f = 0; f < K; f++) {
 			J['drawImage'](gfd[parseInt(L['charAt'](f))], f * 13, 0)
-		}
+		};
+		uih(G, M0)
 	}
+}
+function uif(A) {
+	A = parseInt(A, 10);
+	if (isNaN(A) || A < 0) {
+		A = 0
+	};
+	var B = Math['floor'](A / 60);
+	var C = A % 60;
+	return (B < 10 ? '0': '') + B + ':' + (C < 10 ? '0': '') + C
+}
+function uih(A, B) {
+	if (A == 'rm' && $('grassMines')) {
+		$('grassMines')['innerHTML'] = parseInt(B, 10) + ''
+	};
+	if (A == 'es' && $('grassTime')) {
+		$('grassTime')['innerHTML'] = uif(B)
+	}
+}
+var _classicGfs = gfs['slice'](0);
+var _classicGfb = gfb['slice'](0);
+var _grassTheme = null;
+function _themeCanvas(A, B) {
+	var C = document['createElement']('canvas');
+	C['width'] = 25;
+	C['height'] = 25;
+	C['_uiSkin'] = B;
+	A(C['getContext']('2d'));
+	return C
+}
+function _grassCell(A) {
+	var B = A['createRadialGradient'](10, 8, 3, 13, 13, 18);
+	B['addColorStop'](0, '#6f8c38');
+	B['addColorStop'](0.58, '#526f2b');
+	B['addColorStop'](1, '#2f4a18');
+	A['fillStyle'] = B;
+	A['fillRect'](0, 0, 25, 25);
+	A['fillStyle'] = 'rgba(206,229,126,0.12)';
+	A['fillRect'](2, 2, 20, 1);
+	A['fillRect'](2, 2, 1, 20);
+	A['fillStyle'] = 'rgba(17,45,10,0.56)';
+	A['fillRect'](0, 24, 25, 1);
+	A['fillRect'](24, 0, 1, 25);
+	A['fillStyle'] = 'rgba(255,255,255,0.035)';
+	for (var B = 4; B < 24; B += 6) {
+		A['fillRect'](B, 3, 1, 19);
+		A['fillRect'](3, B, 19, 1)
+	}
+}
+function _grassOpenCell(A) {
+	A['fillStyle'] = '#536b2f';
+	A['fillRect'](0, 0, 25, 25);
+	A['fillStyle'] = 'rgba(117,146,66,0.55)';
+	A['fillRect'](1, 1, 23, 1);
+	A['fillRect'](1, 1, 1, 23);
+	A['fillStyle'] = 'rgba(21,50,12,0.42)';
+	A['fillRect'](0, 24, 25, 1);
+	A['fillRect'](24, 0, 1, 25);
+	A['fillStyle'] = 'rgba(20,50,13,0.18)';
+	A['fillRect'](0, 0, 25, 1);
+	A['fillRect'](0, 0, 1, 25);
+	A['fillStyle'] = 'rgba(159,183,88,0.06)';
+	A['fillRect'](4, 6, 15, 1);
+	A['fillRect'](7, 15, 11, 1)
+}
+function _grassNumber(A, B) {
+	_grassOpenCell(A);
+	var C = ['#1f4bc9', '#12631d', '#b10f0f', '#441176', '#7d210f', '#007a7b', '#171717', '#5f5f5f'];
+	A['fillStyle'] = C[B - 1] || '#171717';
+	A['font'] = 'bold 16px Arial';
+	A['textAlign'] = 'center';
+	A['textBaseline'] = 'middle';
+	A['fillText'](B + '', 12.5, 13.5)
+}
+function _ladybug(A, B) {
+	_grassOpenCell(A);
+	A['fillStyle'] = B;
+	A['beginPath']();
+	A['arc'](12.5, 13.2, 7.4, 0, Math['PI'] * 2, true);
+	A['fill']();
+	A['fillStyle'] = '#101010';
+	A['beginPath']();
+	A['arc'](12.5, 9.2, 2.4, 0, Math['PI'] * 2, true);
+	A['fill']();
+	A['fillRect'](12.1, 7.8, 0.8, 11);
+	A['fillRect'](8.4, 11.2, 8.2, 0.9);
+	A['fillRect'](7.5, 14.6, 4, 0.9);
+	A['fillRect'](13.5, 14.6, 4, 0.9);
+	A['fillRect'](6.9, 8.2, 3.8, 0.9);
+	A['fillRect'](14.3, 8.2, 3.8, 0.9);
+	A['fillStyle'] = '#101010';
+	A['beginPath']();
+	A['arc'](8.9, 12.4, 1.3, 0, Math['PI'] * 2, true);
+	A['fill']();
+	A['beginPath']();
+	A['arc'](16.1, 12.4, 1.3, 0, Math['PI'] * 2, true);
+	A['fill']();
+	A['beginPath']();
+	A['arc'](10.4, 16.7, 1.2, 0, Math['PI'] * 2, true);
+	A['fill']();
+	A['beginPath']();
+	A['arc'](14.6, 16.7, 1.2, 0, Math['PI'] * 2, true);
+	A['fill']();
+	A['fillStyle'] = 'rgba(255,255,255,0.55)';
+	A['fillRect'](8.8, 8.5, 2.4, 1.7)
+}
+function _grassFlag(A) {
+	_ladybug(A, '#c92219');
+	A['fillStyle'] = '#f4eacb';
+	A['fillRect'](15.2, 7.2, 5.3, 3.1)
+}
+function _buildGrassTheme() {
+	if (_grassTheme) {
+		return _grassTheme
+	};
+	if (!document['createElement']) {
+		_grassTheme = {
+			gfs: _classicGfs,
+			gfb: _classicGfb
+		};
+		return _grassTheme
+	};
+	var A = [];
+	A[0] = _themeCanvas(function(B) {
+		_grassCell(B)
+	},
+	'grass-cell');
+	A[1] = _themeCanvas(function(B) {
+		_grassFlag(B)
+	},
+	'grass-flag');
+	A[2] = _themeCanvas(function(B) {
+		_ladybug(B, '#8b1512')
+	},
+	'grass-explode');
+	A[3] = _themeCanvas(function(B) {
+		_ladybug(B, '#d52a1d')
+	},
+	'ladybug-mine');
+	var C = [];
+	C[0] = _themeCanvas(function(B) {
+		_grassOpenCell(B)
+	},
+	'grass-open');
+	for (var D = 1; D < 9; D++) {
+		C[D] = _themeCanvas(function(B) {
+			return function(E) {
+				_grassNumber(E, B)
+			}
+		} (D),
+		'grass-open-' + D)
+	};
+	_grassTheme = {
+		gfs: A,
+		gfb: C
+	};
+	return _grassTheme
+}
+function _applySkin(A) {
+	if (A == 'grass') {
+		var B = _buildGrassTheme();
+		gfs = B['gfs'];
+		gfb = B['gfb']
+	} else {
+		gfs = _classicGfs;
+		gfb = _classicGfb
+	}
+}
+function _repaintBoard() {
+	if (!ctx || !d31['length']) {
+		return
+	};
+	for (var A = 0; A < Y; A++) {
+		for (var B = 0; B < X; B++) {
+			var C = d31[A][B];
+			if (C[0] == 0) {
+				ctx['drawImage'](gfs[0], B * 25, A * 25)
+			} else {
+				if (C[0] == 2) {
+					if (_gs == 3 && C[1] == 0) {
+						ctx['drawImage'](gfs[2], B * 25, A * 25)
+					} else {
+						ctx['drawImage'](gfs[1], B * 25, A * 25)
+					}
+				} else {
+					if (C[1] == 1) {
+						ctx['drawImage'](gfs[3], B * 25, A * 25)
+					} else {
+						ctx['drawImage'](gfb[C[2]], B * 25, A * 25)
+					}
+				}
+			}
+		}
+	};
+	crm(RM);
+	ces(typeof e33 == 'undefined' ? 0: e33)
 }
 function _gnt() {
 	for (var l = 0; l < Y; l++) {
@@ -554,10 +751,26 @@ if (df5 == null) {
 };
 udp();
 function start() {
+	uit(localStorage['getItem']('ui7'));
 	_123(localStorage['getItem']('ch7'));
 	on();
 	sid();
 	ad()
+}
+function uit(A) {
+	var B = A == 'grass';
+	_applySkin(B ? 'grass': 'classic');
+	document['body']['className'] = B ? 'ui-grass': '';
+	if ($('uiToggle')) {
+		$('uiToggle')['innerHTML'] = B ? '经典版': '新版UI'
+	};
+	localStorage['setItem']('ui7', B ? 'grass': 'classic');
+	uih('rm', typeof RM == 'undefined' ? 0: RM);
+	uih('es', typeof e33 == 'undefined' ? 0: e33);
+	_repaintBoard()
+}
+function tui() {
+	uit(document['body']['className'] == 'ui-grass' ? 'classic': 'grass')
 }
 function un() {
 	var Z = localStorage['getItem']('uid');

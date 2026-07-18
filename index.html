@@ -24,7 +24,7 @@ h1{text-align:center;}
 <div class="container">
 <h1>经典扫雷在线游戏</h1>
   <center>
-    <div style="margin-top:0.8rem;">
+    <div class="top-controls" style="margin-top:0.8rem;">
       <a href="javascript:_123(1)">基础</a>
       &nbsp;
       <a href="javascript:_123(2)">中级</a>
@@ -34,6 +34,8 @@ h1{text-align:center;}
       <a href="javascript:_123(4)">满屏</a>
       &nbsp;
       <a href="javascript:_123(5)">自定义</a>
+      &nbsp;
+      <button id="uiToggle" class="ui-toggle" type="button" onclick="tui()">新版UI</button>
     </div>
     <div id="custom" style="display:none">
       <input id="hm" type="hidden" value="15">
@@ -42,7 +44,15 @@ h1{text-align:center;}
       <span id="dfp"></span>
       <input type="button" onclick="udf()" value="确定">
     </div>
-    <table style="margin-top:0.8rem;border-radius:6px;background:#cccccc">
+    <div id="grassHud" class="grass-hud" aria-hidden="true">
+      <img src="./grass-clock.svg" alt="">
+      <span id="grassTime">00:00</span>
+      <button type="button" onclick="_45()" aria-label="重新开始">
+        <img src="./ladybug-reset.svg" alt="">
+      </button>
+      <span id="grassMines">0</span>
+    </div>
+    <table id="gameShell" style="margin-top:0.8rem;border-radius:6px;background:#cccccc">
       <tr>
         <td style="padding:9px;">
 

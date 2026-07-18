@@ -7,9 +7,39 @@ textarea, input, select {vertical-align:middle;outline:none;border:1px solid #c4
 h1 {margin:20px auto 30px;text-align:center;font-size:24px;color:#222222;font-weight:normal;position:relative;clear:both;}
 a {color:#0E5BAB;text-decoration:none;}
 a:hover {color:#f73131;}
+.ui-toggle {height:1.7rem;padding:0 0.55rem;border:1px solid #8aa6c1;border-radius:3px;background:#f5f8fb;color:#0E5BAB;font-size:14px;line-height:1;cursor:pointer;vertical-align:middle;}
+.ui-toggle:hover {background:#e9f2fb;color:#f73131;}
+.grass-hud {display:none;}
+
+body.ui-grass {min-height:100vh;overflow:auto;background:#123f16;color:#dcefb1;font-family:Arial,Helvetica,sans-serif;}
+body.ui-grass::before {content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 46% 32%, rgba(84,176,42,0.86), rgba(31,107,24,0.86) 38%, rgba(7,46,15,0.98) 78%),linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),linear-gradient(0deg, rgba(255,255,255,0.035) 1px, transparent 1px);background-size:auto,9px 9px,11px 11px;}
+body.ui-grass::after {content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 52% 18%, transparent 0, transparent 48%, rgba(0,0,0,0.42) 100%),repeating-linear-gradient(74deg, rgba(215,236,118,0.05) 0 1px, transparent 1px 7px);mix-blend-mode:multiply;}
+body.ui-grass .container {width:max-content;min-width:min(100%,1020px);margin:0 auto 28px;padding:14px 42px 28px;background:transparent;}
+body.ui-grass h1 {display:none;}
+body.ui-grass .top-controls {margin-top:0.55rem !important;padding:8px 12px;border-radius:999px;background:rgba(10,48,14,0.42);box-shadow:inset 0 1px 0 rgba(255,255,255,0.18),0 12px 32px rgba(0,0,0,0.22);backdrop-filter:blur(2px);}
+body.ui-grass a {color:#e5f5a6;font-weight:700;text-shadow:0 1px 2px #14350d;}
+body.ui-grass a:hover {color:#fff5b7;}
+body.ui-grass .ui-toggle {height:1.9rem;padding:0 0.72rem;border:1px solid rgba(234,255,157,0.58);border-radius:999px;background:linear-gradient(#e6f5a7,#8fb44b 46%,#405f22);color:#16350e;font-weight:700;box-shadow:inset 0 1px 0 rgba(255,255,255,0.7),0 2px 8px rgba(0,0,0,0.28);text-shadow:0 1px 0 rgba(255,255,255,0.38);}
+body.ui-grass #custom {margin-top:10px;color:#ecf6bf;font-weight:700;text-shadow:0 1px 2px #102b0b;}
+body.ui-grass input {border-color:#4e7229;background:rgba(237,245,176,0.92);color:#122c0c;font-weight:700;}
+body.ui-grass input[type=button] {width:auto;padding:0 0.55rem;background:linear-gradient(#f0f6bf,#b9cd65);cursor:pointer;}
+body.ui-grass #dfp {display:inline-block;margin-left:6px;color:#f1f9c9;}
+body.ui-grass .grass-hud {display:flex;align-items:center;justify-content:center;gap:18px;margin:8px auto 10px;height:46px;color:#f4f4df;font-size:16px;font-weight:800;letter-spacing:0;text-shadow:0 2px 3px rgba(0,0,0,0.72);}
+body.ui-grass .grass-hud img {width:42px;height:42px;filter:drop-shadow(0 5px 5px rgba(0,0,0,0.35));}
+body.ui-grass .grass-hud button {width:48px;height:48px;padding:0;border:0;border-radius:50%;background:transparent;cursor:pointer;}
+body.ui-grass .grass-hud button:active {transform:translateY(1px) scale(0.97);}
+body.ui-grass #gameShell {margin-top:0 !important;background:rgba(38,88,24,0.24) !important;border-radius:0 !important;box-shadow:none;}
+body.ui-grass #gameShell > tbody > tr > td {padding:0 !important;}
+body.ui-grass #p42 {display:none;}
+body.ui-grass .pad {border:0;}
+body.ui-grass #paf {display:block;margin-top:0 !important;border:1px solid rgba(175,213,99,0.34);background:#416e27;box-shadow:0 0 0 1px rgba(6,44,11,0.55),0 0 22px rgba(0,0,0,0.26),inset 0 0 34px rgba(18,68,15,0.44);}
 
 @media screen and (max-width:481px) {
   body {margin:0;padding:0;font-family:PingFang SC,STHeiti,Microsoft YaHei,Helvetica,Arial,sans-serif;font-size:14px;color:#333;}
   .container {width:100%;margin:20px auto;border:none;padding:0;}
   h1 {margin:15px 20px 10px 20px;font-size:20px;text-align:left;font-weight:700;}
+  body.ui-grass .container {width:max-content;min-width:100%;margin:0 auto;padding:10px 18px 22px;}
+  body.ui-grass .top-controls {width:max-content;max-width:calc(100vw - 36px);white-space:nowrap;overflow:auto;}
+  body.ui-grass .grass-hud {height:42px;gap:12px;font-size:15px;}
+  body.ui-grass .grass-hud img {width:38px;height:38px;}
 }
