@@ -95,24 +95,37 @@ function f17() {
 	}
 }
 function o0o(k, l) {
-	d31[l][k][0] = 1;
-	if (d31[l][k][1] == 1) {
-		ctx['drawImage'](gfs[2], k * 25, l * 25);
-		f17()
-	} else {
-		ctx['drawImage'](gfb[d31[l][k][2]], k * 25, l * 25);
+	var Q = [k, l];
+	while (Q['length']) {
+		l = Q['pop']();
+		k = Q['pop']();
+		if (l < 0 || l >= Y || k < 0 || k >= X) {
+			continue
+		};
+		var B = d31[l][k];
+		if (B[0] != 0 && B[0] != 3) {
+			continue
+		};
+		B[0] = 1;
+		if (B[1] == 1) {
+			ctx['drawImage'](gfs[2], k * 25, l * 25);
+			f17();
+			return
+		};
+		ctx['drawImage'](gfb[B[2]], k * 25, l * 25);
 		RB--;
 		if (RB == 0) {
-			scs()
-		} else {
-			if (d31[l][k][2] == 0) {
-				for (var s = 0; s < 8; s++) {
-					var p = l + CY[s];
-					var o = k + CX[s];
-					if (p >= 0 && p < Y && o >= 0 && o < X) {
-						if (d31[p][o][0] == 0) {
-							o0o(o, p)
-						}
+			scs();
+			return
+		};
+		if (B[2] == 0) {
+			for (var s = 0; s < 8; s++) {
+				var p = l + CY[s];
+				var o = k + CX[s];
+				if (p >= 0 && p < Y && o >= 0 && o < X) {
+					if (d31[p][o][0] == 0) {
+						d31[p][o][0] = 3;
+						Q['push'](o, p)
 					}
 				}
 			}
@@ -571,6 +584,27 @@ function _75(g) {
 		window['event']['returnValue'] = false
 	}
 }
+function _dcb() {
+	var A = X * 25;
+	if (document['createElement'] && X > 1 && Y > 1) {
+		var B = document['createElement']('canvas');
+		B['width'] = A;
+		B['height'] = 25;
+		var C = B['getContext']('2d');
+		for (var f = 0; f < X; f++) {
+			C['drawImage'](gfs[0], f * 25, 0)
+		};
+		for (var t = 0; t < Y; t++) {
+			ctx['drawImage'](B, 0, t * 25)
+		};
+		return
+	};
+	for (var f = 0; f < X; f++) {
+		for (var t = 0; t < Y; t++) {
+			ctx['drawImage'](gfs[0], f * 25, t * 25)
+		}
+	}
+}
 function _d46() {
 	_edn();
 	he = 0;
@@ -584,11 +618,7 @@ function _d46() {
 	paf['width'] = u;
 	paf['height'] = Y * 25;
 	$('face')['src'] = gif[0];
-	for (var f = 0; f < X; f++) {
-		for (var t = 0; t < Y; t++) {
-			ctx['drawImage'](gfs[0], f * 25, t * 25)
-		}
-	};
+	_dcb();
 	paf['onmousedown'] = function(g) {
 		_65(g)
 	};
@@ -793,7 +823,6 @@ function on() {
 	setTimeout(on, 180000)
 }
 function getuid() {
-	up();
 	sid();
 }
 function _123(d) {
