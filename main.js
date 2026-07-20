@@ -505,38 +505,54 @@ function _67(g) {
 		}
 	}
 }
+function _txy(g, A) {
+	if (!g[A] || !g[A][0]) {
+		return null
+	};
+	var h = paf['getBoundingClientRect']();
+	var k = Math['floor']((g[A][0]['clientX'] - h['left']) / 25);
+	var l = Math['floor']((g[A][0]['clientY'] - h['top']) / 25);
+	if (k < 0 || k >= X || l < 0 || l >= Y) {
+		return null
+	};
+	return [k, l]
+}
 function _77(g) {
 	if (_gs > 1) {
 		return
 	};
+	if (g['preventDefault']) {
+		g['preventDefault']()
+	};
 	_tch = 1;
-	var h = paf['getBoundingClientRect']();
-	var k = Math['floor']((g['touches'][0]['clientX'] - h['left']) / 25);
-	var l = Math['floor']((g['touches'][0]['clientY'] - h['top']) / 25);
+	clearTimeout(_hl);
+	var xy = _txy(g, 'touches');
+	if (xy == null) {
+		return
+	};
+	var k = xy[0];
+	var l = xy[1];
+	_x0 = k;
+	_y0 = l;
 	if (d31[l][k][0] == 1) {
-		c67(k, l)
+		c67(k, l);
+		_tch = 3
 	} else {
 		_hl = setTimeout(function() {
 			return lgt(k, l)
 		},
-		320)
+		500)
 	}
 }
 var _hl;
 function lgt(k, l) {
-	if (_opn == 1 && _tpn == null) {
+	if (_gs > 1 || l < 0 || l >= Y || k < 0 || k >= X) {
 		return
 	};
 	_tch = 3;
 	var j = d31[l][k][0];
-	if (_gs == 0) {
-		_es()
-	};
-	if (_tpn == null) {
-		if (j == 2) {
-			crm(++RM)
-		};
-		o0o(k, l)
+	if (j == 1) {
+		c67(k, l)
 	} else {
 		M5k(k, l)
 	}
@@ -544,39 +560,26 @@ function lgt(k, l) {
 var tc0 = 0;
 function _75(g) {
 	if (_tch == 1) {
-		var h = paf['getBoundingClientRect']();
-		var k = Math['floor']((g['changedTouches'][0]['clientX'] - h['left']) / 25);
-		var l = Math['floor']((g['changedTouches'][0]['clientY'] - h['top']) / 25);
-		var j = d31[l][k][0];
-		if (_gs == 0) {
-			_es()
-		};
-		if (j != 1) {
-			if (_tpn == null) {
-				var m = Date['now']();
-				var n;
-				if (k == _x0 && l == _y0) {
-					n = m - tc0
-				} else {
-					_x0 = k;
-					_y0 = l;
-					tc0 = Date['now']();
-					n = 1000
+		var xy = _txy(g, 'changedTouches');
+		if (xy != null) {
+			var k = xy[0];
+			var l = xy[1];
+			if (k == _x0 && l == _y0) {
+				var j = d31[l][k][0];
+				if (_gs == 0 && j != 2) {
+					_es()
 				};
-				if (_opn == 1 && n < 400 && j == 0) {
-					o0o(k, l)
+				if (j == 1) {
+					c67(k, l)
 				} else {
-					M5k(k, l)
-				}
-			} else {
-				if (j != 2) {
-					o0o(k, l)
+					if (j == 0) {
+						o0o(k, l)
+					}
 				}
 			}
 		};
 		_tch = 3;
-		clearTimeout(_hl);
-		tc0 = m
+		clearTimeout(_hl)
 	};
 	if (g['preventDefault']) {
 		g['preventDefault']()
@@ -781,7 +784,7 @@ if (df5 == null) {
 };
 udp();
 function start() {
-	uit(localStorage['getItem']('ui7'));
+	uit('classic');
 	_123(localStorage['getItem']('ch7'));
 	on();
 	sid();

@@ -8,8 +8,10 @@ h1 {margin:20px auto 30px;text-align:center;font-size:24px;color:#222222;font-we
 a {color:#0E5BAB;text-decoration:none;}
 a:hover {color:#f73131;}
 .ui-toggle {height:1.7rem;padding:0 0.55rem;border:1px solid #8aa6c1;border-radius:3px;background:#f5f8fb;color:#0E5BAB;font-size:14px;line-height:1;cursor:pointer;vertical-align:middle;}
+.ui-toggle[hidden] {display:none;}
 .ui-toggle:hover {background:#e9f2fb;color:#f73131;}
 .grass-hud {display:none;}
+#paf {touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;}
 
 body.ui-grass {min-height:100vh;overflow:auto;background:#123f16;color:#dcefb1;font-family:Arial,Helvetica,sans-serif;}
 body.ui-grass::before {content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 46% 32%, rgba(84,176,42,0.86), rgba(31,107,24,0.86) 38%, rgba(7,46,15,0.98) 78%),linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),linear-gradient(0deg, rgba(255,255,255,0.035) 1px, transparent 1px);background-size:auto,9px 9px,11px 11px;}
