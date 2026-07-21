@@ -11,7 +11,7 @@ a:hover {color:#f73131;}
 .ui-toggle[hidden] {display:none;}
 .ui-toggle:hover {background:#e9f2fb;color:#f73131;}
 .grass-hud {display:none;}
-#paf {touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;}
+#paf {touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;}
 
 body.ui-grass {min-height:100vh;overflow:auto;background:#123f16;color:#dcefb1;font-family:Arial,Helvetica,sans-serif;}
 body.ui-grass::before {content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 46% 32%, rgba(84,176,42,0.86), rgba(31,107,24,0.86) 38%, rgba(7,46,15,0.98) 78%),linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),linear-gradient(0deg, rgba(255,255,255,0.035) 1px, transparent 1px);background-size:auto,9px 9px,11px 11px;}

@@ -521,9 +521,6 @@ function _77(g) {
 	if (_gs > 1) {
 		return
 	};
-	if (g['preventDefault']) {
-		g['preventDefault']()
-	};
 	_tch = 1;
 	clearTimeout(_hl);
 	var xy = _txy(g, 'touches');
@@ -551,10 +548,15 @@ function lgt(k, l) {
 	};
 	_tch = 3;
 	var j = d31[l][k][0];
-	if (j == 1) {
-		c67(k, l)
-	} else {
-		M5k(k, l)
+	if (_gs == 0 && j != 2) {
+		_es()
+	};
+	if (j != 2) {
+		if (j == 1) {
+			c67(k, l)
+		} else {
+			o0o(k, l)
+		}
 	}
 }
 var tc0 = 0;
@@ -572,8 +574,8 @@ function _75(g) {
 				if (j == 1) {
 					c67(k, l)
 				} else {
-					if (j == 0) {
-						o0o(k, l)
+					if (j == 0 || j == 2) {
+						M5k(k, l)
 					}
 				}
 			}
@@ -581,9 +583,9 @@ function _75(g) {
 		_tch = 3;
 		clearTimeout(_hl)
 	};
-	if (g['preventDefault']) {
+	if (_tch == 3 && g['preventDefault']) {
 		g['preventDefault']()
-	} else {
+	} else if (_tch == 3) {
 		window['event']['returnValue'] = false
 	}
 }
